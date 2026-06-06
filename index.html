@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <div class="dropdown">
+        <button class="dropbtn">
+            Check out my Website
+            <span class="sep">|</span>
+            <img src="./media/dropdown.png" alt="Dropdown" class="dropbtn">
+        </button>
+        <div class="dropdown-content">
+            <a href="index.html">Home</a>
+            <a href="youtube-videos.html">Youtube Videos</a>
+            <a class="blog" href="blog.html">Blog</a>
+            <a href="http://store.earlsweatshirt.com/" target="_blank">Stuff</a>
+            <a href="https://earlsweatshirt.os.fan/earl-sweatshirt-email" target="_blank">Newsletter</a>
+            <div class="social-icons">
+                <div class="HeadersocialWrap">
+                    <ul class="social-header">
+                        <li class="fs-ap">
+                            <a data-track="apple-music" href="https://music.apple.com/us/artist/earl-sweatshirt/445693504" class="fs-social" target="_blank" aria-label="social">
+                                <i class="fab fa-apple" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="fs-sp">
+                            <a data-track="spotify" href="https://open.spotify.com/artist/3A5tHz1SfngyOZM2gItYKu?si=OKOiYqSOT8CgdCD2jIQ_Ag" class="fs-social" target="_blank" aria-label="social">
+                                <i class="fab fa-spotify"></i>
+                            </a>
+                        </li>
+                        <li class="fs-am">
+                            <a data-track="amazon-d" href="https://music.amazon.com/artists/B009HJ1MFW/earl-sweatshirt" class="fs-social" target="_blank" aria-label="social">
+                                <i class="fab fa-amazon" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="fs-ig">
+                            <a data-track="instagram" href="https://instagram.com/soapmanwun" class="fs-social" target="_blank" aria-label="social">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="fs-tw">
+                            <a data-track="twitter" href="https://twitter.com/earlxsweat" class="fs-social" target="_blank" aria-label="social">
+                                <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="fs-fb">
+                            <a data-track="facebook" href="https://www.facebook.com/EarlSweatshirtMusic/" class="fs-social" target="_blank" aria-label="social">
+                                <i class="fab fa-facebook" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="fs-yt">
+                            <a data-track="youtube" href="https://www.youtube.com/channel/UCo1MSTJzho-_rQWWAjxisDA" class="fs-social" target="_blank" aria-label="social">
+                                <i class="fab fa-youtube" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="fs-sc">
+                            <a data-track="soundcloud-ftr" href="https://soundcloud.com/earlxsweatshirtmusic" class="fs-social" target="_blank" aria-label="social">
+                                <i class="fab fa-soundcloud" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="fs-td">
+                            <a data-track="tidal-ftr" href="https://tidal.com/browse/artist/4774205" class="fs-social" target="_blank" aria-label="social">
+                                <img class="desktop" src="./earl-sweatshirt-website_files/tidal-svgrepo-com.svg" alt="image">
+                                <img class="mobile" style="display: none;" src="./earl-sweatshirt-website_files/tidal-white.svg" alt="image">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-banner desktop">
+    <a href="index.html">
+        <img src="./media/header.png" alt="lebroe james">
+    </a>
+</div>
+
+   <script>
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownContent = document.querySelector('.dropdown-content');
+
+    dropdown.addEventListener('click', () => {
+        dropdownContent.classList.toggle('show');
+    });
+
+    window.addEventListener('click', (event) => {
+        if (!event.target.matches('.dropbtn') && !event.target.matches('.dropbtn img')) {
+            if (dropdownContent.classList.contains('show')) {
+                dropdownContent.classList.remove('show');
+            }
+        }
+    });
+   </script> 
+</head>
