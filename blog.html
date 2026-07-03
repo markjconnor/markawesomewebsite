@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark's Awesome Website | Blog</title>
+    <link rel="icon" type="image/png" href="./media/lebron.png" sizes="480x480">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-image: none; 
+            background-color: #C9BD88; 
+            text-transform: none;
+        }
+
+        .header {
+            height: 80px; 
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 900px; 
+        }
+
+        .document-canvas {
+            width: 100%;
+            min-height: 500px;
+            background: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 2px;
+            padding: 40px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            color: #000000;
+            font-family: "Georgia", serif;
+            line-height: 1.6;
+        }
+
+        .document-canvas img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #cccccc;
+            margin: 15px 0;
+        }
+
+        .document-canvas h1, .document-canvas h2, .document-canvas h3 {
+            font-family: "Arial", sans-serif;
+            color: #000000;
+            margin-top: 25px;
+        }
+
+        .comments-canvas {
+            width: 100%;
+            background-color: #f6f6f6;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .related-videos-overlay {
+            position: relative; 
+            width: 350px;
+            height: 600px; 
+            background-color: linear-gradient(rgba(255, 255, 255, 0.31), rgba(201, 189, 136, 1));
+            border-radius: 6px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            overflow: hidden; 
+            
+        }
+
+        .sidebar-scroll-viewport {
+            position: absolute;
+            top: 12px;    
+            left: 6px;    
+            right: 6px;   
+            bottom: 6px;  
+            overflow-y: auto; 
+            padding-right: 4px;
+            box-sizing: border-box;
+            background-color: linear-gradient(rgba(255, 255, 255, 0.31), rgba(201, 189, 136, 1));
+        }
+
+        .retro-post-row {
+            display: flex;
+            flex-direction: column;
+            padding: 12px 10px;
+            border-bottom: 1px solid #c9ba77; 
+            transition: background 0.15s ease-in-out;
+            cursor: url('./media/cursors/Link.cur'), pointer !important;
+        }
+        .retro-post-row:hover {
+            opacity: 0.7;
+                }
+        .retro-post-row.active {
+            background-color: #c9ba77; 
+            /* border-left: 4px solid #388bfd; */
+        }
+        
+        .retro-post-title {
+            font-size: 14px;
+            font-family: "Arial", sans-serif;
+            font-weight: bold;
+            color: #000000; 
+            margin-bottom: 4px;
+        }
+        .retro-post-date {
+            font-size: 11px;
+            font-family: "Arial", sans-serif;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+    <div maincontainer>
+
+        <header class="header">
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Check out my Website
+                    <span class="seperator">      |</span>
+                    <img src="./media/dropdown.png" alt="Dropdown" class="dropbtn">
+                </button>
+                <div class="dropdown-content">
+                    <a href="index.html">Home</a>
+                    <a href="art.html">Art Board</a>
+                    <a href="youtube.html">Youtube Videos</a>
+                    <a class="blog" href="blog.html">Blog</a>
+                    <a href="https://tagpro.koalabeast.com/" target="_blank">Cool Game</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-layout">
+            
+            <div class="left-column">
+                <div class="document-canvas" id="blog-content">
+                    <h3></h3>
+                </div>
+
+                <div class="comments-canvas">
+                    <h4 style="margin-top:0; font-family:Arial; color:#333;">Comments</h4>
+                    <div id="giscus-container">
+                        </div>
+                </div>
+            </div>
+
+            <div class="related-videos-overlay">
+                <div class="sidebar-scroll-viewport" id="sidebar-list">
+                    </div>
+            </div>
+
+        </div>
+
+        <script>
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownContent = document.querySelector('.dropdown-content');
+
+            dropdown.addEventListener('click', () => {
+                dropdownContent.classList.toggle('show');
+            });
+
+            window.addEventListener('click', (event) => {
+                if (!event.target.matches('.dropbtn') && !event.target.matches('.dropbtn img')) {
+                    if (dropdownContent.classList.contains('show')) {
+                        dropdownContent.classList.remove('show');
+                    }
+                }
+            });
+
+            const myPosts = [
+                {
+                    id: "post-1", // Unique ID for Giscus to track comments for this specific post
+                    title: "Emu",
+                    date: "June 29, 2026",
+                    file: "./posts/emu.md" 
+                },
+
+            ];
+
+            function loadGiscus(postId) {
+                const container = document.getElementById('giscus-container');
+                container.innerHTML = '';
+
+                const script = document.createElement('script');
+                script.src = "https://giscus.app/client.js";
+                
+                script.setAttribute("data-repo", "markjconnor/markawesomewebsite");
+                script.setAttribute("data-repo-id", "R_kgDOSzGPQA");
+                script.setAttribute("data-category", "Announcements");
+                script.setAttribute("data-category-id", "DIC_kwDOSzGPQM4C-qhe");
+                script.setAttribute("data-mapping", "specific");
+                script.setAttribute("data-term", postId); 
+                script.setAttribute("data-strict", "0");
+                script.setAttribute("data-reactions-enabled", "1");
+                script.setAttribute("data-emit-metadata", "0");
+                script.setAttribute("data-input-position", "bottom");
+                script.setAttribute("data-theme", "light");
+                script.setAttribute("data-lang", "en");
+                script.crossOrigin = "anonymous";
+                script.async = true;
+
+                container.appendChild(script);
+            }
+
+            async function loadPostIndex(index) {
+                const post = myPosts[index];
+                const contentBox = document.getElementById('blog-content');
+                
+                try {
+                    const response = await fetch(post.file);
+                    if (!response.ok) throw new Error("File not found");
+                    
+                    const markdownText = await response.text();
+                    
+                    contentBox.innerHTML = marked.parse(markdownText);
+                    
+                } catch (error) {
+                    contentBox.innerHTML = `
+                        <p>No blog post here.</p>
+                    `;
+                }
+
+                loadGiscus(post.id);
+
+                document.querySelectorAll('.retro-post-row').forEach((row, idx) => {
+                    if(idx === index) row.classList.add('active');
+                    else row.classList.remove('active');
+                });
+            }
+
+            function initializeSidebar() {
+                const listContainer = document.getElementById('sidebar-list');
+                listContainer.innerHTML = ''; 
+
+                myPosts.forEach((post, index) => {
+                    const row = document.createElement('div');
+                    row.className = 'retro-post-row';
+                    row.onclick = () => loadPostIndex(index);
+
+                    row.innerHTML = `
+                        <div class="retro-post-title">${post.title}</div>
+                        <div class="retro-post-date">${post.date}</div>
+                    `;
+                    listContainer.appendChild(row);
+                });
+
+                if(myPosts.length > 0) loadPostIndex(0);
+            }
+
+            document.addEventListener("DOMContentLoaded", initializeSidebar);
+        </script>
+    </div>
+</body>
+</html>

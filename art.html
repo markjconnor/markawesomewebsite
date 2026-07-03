@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark's Awesome Website | Art Board</title>
+    <link rel="icon" type="image/png" href="./media/lebron.png" sizes="480x480">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .header {
+            height: 20px; 
+            display: block;
+        }
+
+        html, body {
+            background-image: url("./media/windowsbackground.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #2764eb;
+        }
+
+        .art-board-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto;
+            width: 95%;
+        }
+
+        .paint-card {
+            width: 100%;
+            max-width: 1200px;
+            /*background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 6px;*/
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        #paint-frame {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #000000;
+        }
+
+        .art-board-container .subtext {
+            position: relative;
+            
+            width: 530px;
+            height: 172px;    
+            
+            background-image: url("./media/microsoft-system-message.jpg");
+            background-size: 100% 100%; 
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 0px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            overflow: hidden; 
+            margin: 10px auto 0 auto;
+        }
+
+        .notepad-content-viewport {
+            position: absolute;
+            top: 32px;
+            left: 16px;      
+            right: 16px;     
+            height: 85px;
+            overflow-y: auto; 
+            color: #000000;  
+            font-family: "Tahoma", "Arial", sans-serif;
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        .action-button-row {
+            position: absolute;
+            bottom: 11px;   
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .paint-email-btn {
+            display: inline-flex;
+            margin-bottom: 14px;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 60px;          
+            font-size: 12px;            
+            font-family: "Tahoma", "Arial", sans-serif;
+            font-weight: 520;
+            color: #000000;
+            background-color: #c0c0c0;
+            border: none;
+
+            cursor: url('./media/cursors/Link.cur'), pointer !important;
+            transition: all 0.15s ease-in-out;
+            outline: none;
+            white-space: nowrap;
+        }
+
+        .paint-email-btn:active {
+            filter: brightness(1.1);
+        }
+
+        .paint-email-btn img {
+            width: 12px;
+            height: auto;
+            margin-right: 6px;
+            display: block;
+        }
+    </style>
+</head>
+<body> 
+    <div maincontainer>
+
+        <header class="header">
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Check out my Website
+                    <span class="seperator">      |</span>
+                    <img src="./media/dropdown.png" alt="Dropdown" class="dropbtn">
+                </button>
+                <div class="dropdown-content">
+                    <a href="index.html">Home</a>
+                    <a href="art.html">Art Board</a>
+                    <a href="youtube.html">Youtube Videos</a>
+                    <a class="blog" href="blog.html">Blog</a>
+                    <a href="https://tagpro.koalabeast.com/" target="_blank">Cool Game</a>
+                    <div class="social-icons">
+                        <div class="HeaderSocials">
+                            <ul class="socials">
+                                <li>
+                                    <a href="https://www.github.com/markjconnor/" target="_blank"> <img src="./media/github.png" alt="GitHub"></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/mark-connor2003/" target="_blank"> <img src="./media/linkedin.png" alt="LinkedIn"></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/" target="_blank"> <img src="./media/instagram.png" alt="Instagram"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="art-board-container">
+            <div class="paint-card">
+                <div class="text-container">
+                    <h3></h3>
+                </div>
+                
+                <iframe 
+                    id="paint-frame" 
+                    src="https://jspaint.app/?embed#local:sandbox" 
+                    allow="clipboard-read; clipboard-write;">
+                </iframe>
+
+                <div class="subtext">
+                    <div class="notepad-content-viewport">
+                        Send your art via email for a once in a lifetime chance to be featured on MarkAwesomeWebsite.com<br>
+                        1. Go to File -> Save<br>
+                        2. Click "Send email", attach your drawing, send it to me!
+                    </div>
+
+                    <div class="action-button-row">
+                        <button class="paint-email-btn" onclick="sendEmail()">
+                            Send email
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownContent = document.querySelector('.dropdown-content');
+
+            dropdown.addEventListener('click', () => {
+                dropdownContent.classList.toggle('show');
+            });
+
+            window.addEventListener('click', (event) => {
+                if (!event.target.matches('.dropbtn') && !event.target.matches('.dropbtn img')) {
+                    if (dropdownContent.classList.contains('show')) {
+                        dropdownContent.classList.remove('show');
+                    }
+                }
+            });
+
+            function sendEmail() {
+                const myEmail = "mark.connor2003@gmail.com"; 
+                
+                const subject = encodeURIComponent("My Art Submission");
+                const body = encodeURIComponent(
+                    "Hey Mark,\n\n" +
+                    "I made a cool drawing on MarkAwesomeWebsite.com!\n\n" +
+                    "[ATTACH YOUR DOWNLOADED FILE HERE]\n\n"
+                );
+
+                window.location.href = `mailto:${myEmail}?subject=${subject}&body=${body}`;
+            }
+        </script> 
+    </div>
+</body>
+</html>

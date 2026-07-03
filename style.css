@@ -5,6 +5,30 @@
     font-style: normal;
 }
 
+html, body {
+    cursor: url('./media/cursors/Normal.cur'), default;
+    background-color: #f0d099;
+    background-image: url('./media/leopardprint-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+a, 
+button, 
+.dropbtn, 
+.dropdown-content a, 
+.link-out-button, 
+.paint-submit-btn {
+    cursor: url('./media/cursors/Link.cur'), pointer !important;
+}
+
+.username-text  {
+    cursor: url('./media/cursors/Text.cur'), text;
+}
+    
+
+        
+
 body {
     background-color: #cdd096;
     margin: 0;
@@ -226,8 +250,8 @@ li.stats {
     display: flex;
     align-items: flex-start;
     border: 1px solid #000000;
-    box-shadow: inset 4px 4px 20px rgba(0, 0, 0, 0.42);
-    background: linear-gradient(rgba(255, 255, 255, 0.31), rgba(201, 189, 136, 1));
+    /*box-shadow: inset 4px 4px 20px rgba(0, 0, 0, 0.42);*/
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(201, 189, 136, 1));
     margin: 0;                 
     border-radius: 0.4vw;
     padding: 1.5vw 1vw;
@@ -249,7 +273,7 @@ li.stats img {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .text-container h3 {
@@ -284,7 +308,7 @@ li.stats img {
 }
 
 .text-container .typeracer {
-    margin-top: 0.7vw;
+    margin-top: 1.4vw;
     font-size: 2.1vw;
     text-align: left;
     font-family: "Lato", Arial, sans-serif;
@@ -297,7 +321,7 @@ li.stats img {
 
 .text-container .chess {
     display: flex;
-    margin-top: 0.7vw;
+    margin-top: 1.4vw;
     font-size: 2.1vw;
     text-align: left;
     font-family: "system-ui", Arial, sans-serif;
@@ -313,9 +337,7 @@ li.stats img {
     margin-right: 0.5vw;
 }
 
-/* --- CUSTOM RUNESCAPE STATS FORMATTING --- */
 
-/* 1. Pull the username closer to the H3 title and make it smaller */
 .text-container .username-text {
     font-size: 0.9vw;
     margin-top: -0.5vw;
@@ -369,8 +391,8 @@ li.stats img {
     width: 100%;
     max-width: 1200px;
     border: 1px solid #000000;
-    box-shadow: inset 4px 4px 20px rgba(0, 0, 0, 0.42); 
-    background: linear-gradient(rgba(255, 255, 255, 0.31), rgba(201, 189, 136, 1)); 
+    /*box-shadow: inset 4px 4px 20px rgba(0, 0, 0, 0.42); */
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(201, 189, 136, 1)); 
     border-radius: 0.4vw;
     padding: 2vw 2.5vw;
     box-sizing: border-box;
