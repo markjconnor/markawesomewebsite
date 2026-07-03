@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark's Awesome Website</title>
+    <link rel="icon" type="image/png" href="http://127.0.0.1:5500/media/lebron.png" sizes="480x480">
+    <link rel="stylesheet" href="./Mark&#39;s Awesome Website_files/style.css">
+</head>
+<body> 
+    <div maincontainer="">
+
+        <header class="header">
+        <div class="dropdown">
+            <button class="dropbtn">
+                Check out my Website
+                <span class="seperator">      |</span>
+                <img src="./Mark&#39;s Awesome Website_files/dropdown.png" alt="Dropdown" class="dropbtn">
+            </button>
+            <div class="dropdown-content">
+                <a href="http://127.0.0.1:5500/index.html">Home</a>
+                <a href="http://127.0.0.1:5500/youtube-videos.html">Youtube Videos</a>
+                <a class="blog" href="http://127.0.0.1:5500/blog.html">Blog</a>
+                <a href="https://tagpro.koalabeast.com/" target="_blank">Cool Game</a>
+                <div class="social-icons">
+                    <div class="HeaderSocials">
+                        <ul class="socials">
+                            <li>
+                                <a href="https://www.github.com/markjconnor/" target="_blank"> <img src="./Mark&#39;s Awesome Website_files/github.png" alt="GitHub"></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/mark-connor2003/" target="_blank"> <img src="./Mark&#39;s Awesome Website_files/linkedin.png" alt="LinkedIn"></a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/" target="_blank"> <img src="./Mark&#39;s Awesome Website_files/instagram.png" alt="Instagram"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-banner desktop">
+        <a href="http://127.0.0.1:5500/index.html">
+            <img src="./Mark&#39;s Awesome Website_files/header.png" alt="lebroe james">
+        </a>
+        </div>
+        </header>
+
+    <div class="stats-container">
+
+    <div class="stats-card">
+        <li class="stats">
+            <img src="./Mark&#39;s Awesome Website_files/osrs.png" alt="Old School RuneScape">
+            <div class="text-container">
+                <a href="https://wiseoldman.net/players/zombiebear88" target="_blank">
+                    <h3>RuneScape Stats</h3>
+                </a>
+                <div class="subtext username-text">zombiebear88</div>
+                
+                <div class="osrs-skills-row">
+                    <div class="skill-item">
+                        <img src="./Mark&#39;s Awesome Website_files/ranged.png" alt="Ranged">
+                        <strong id="osrs-ranged">99</strong>
+                    </div>
+                    <div class="skill-item">
+                        <img src="./Mark&#39;s Awesome Website_files/strength.png" alt="Strength">
+                        <strong id="osrs-strength">99</strong>
+                    </div>
+                    <div class="skill-item">
+                        <img src="./Mark&#39;s Awesome Website_files/slayer.png" alt="Slayer">
+                        <strong id="osrs-slayer">99</strong>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </div>
+
+    <div class="stats-card">
+        <li class="stats">
+            <img src="./Mark&#39;s Awesome Website_files/typeracer.png" alt="TypeRacer" onerror="this.style.display=&#39;none&#39;">
+            <div class="text-container">
+                <a href="https://data.typeracer.com/pit/profile?user=jay_cartwright" target="_blank">
+                    <h3>TypeRacer Stats</h3>
+                </a>
+                 <div class="subtext username-text">jay_cartwright</div>
+                <div class="subtext typeracer"><strong id="tr-wpm">100</strong> WPM</div>
+            </div>
+        </li>
+    </div>
+
+    <div class="stats-card">
+        <li class="stats">
+            <img src="./Mark&#39;s Awesome Website_files/chess.png" alt="Chess.com" onerror="this.style.display=&#39;none&#39;">
+            <div class="text-container">
+                <a href="https://www.chess.com/member/mark983511" target="_blank">
+                    <h3>Chess Stats</h3>
+                </a>
+                <div class="subtext username-text">mark983511</div>
+                <div class="subtext">Rapid ELO: <strong id="chess-rapid">1200</strong></div>
+            </div>
+        </li>
+    </div>
+
+</div>
+
+        
+
+        <script>
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownContent = document.querySelector('.dropdown-content');
+
+            dropdown.addEventListener('click', () => {
+                dropdownContent.classList.toggle('show');
+            });
+
+            window.addEventListener('click', (event) => {
+                if (!event.target.matches('.dropbtn') && !event.target.matches('.dropbtn img')) {
+                    if (dropdownContent.classList.contains('show')) {
+                        dropdownContent.classList.remove('show');
+                    }
+                }
+            });
+        </script> 
+    </div>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
