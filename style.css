@@ -16,6 +16,7 @@
         border-radius: 0 !important;
         border-left: none !important;
         border-right: none !important;
+        filter: blur(0.3px) !important;
     }
 
     .dropbtn {
@@ -45,7 +46,7 @@
         padding: 3vw 4vw !important;
         line-height: normal !important;
         box-sizing: border-box !important;
-        filter: blur(0.6px) !important;
+        filter: blur(0.3px) !important;
     }
 
     ul.socials {
