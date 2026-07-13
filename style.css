@@ -5,6 +5,107 @@
     font-style: normal;
 }
 
+@media (max-width: 768px) {
+    
+    .dropdown {
+        position: relative !important;
+        margin: 0 !important; 
+        width: 100% !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+
+    .dropbtn {
+        width: 100% !important;
+        justify-content: center !important;
+        font-size: 15px !important;
+        padding: 6px 10px !important;
+        height: auto !important;
+        text-transform: none !important;
+    }
+    
+    .dropbtn img {
+        width: 14px !important;
+        height: auto !important;
+        margin-left: 8px !important;
+    }
+
+    .header-banner {
+        width: 100% !important;
+        height: auto !important;
+        margin-top: 0 !important;
+    }
+
+    .paint-card, 
+    .stats-row-wrapper, 
+    div[maincontainer] > div { 
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
+        width: 100% !important;
+        padding: 10px !important;
+    }
+
+    .stats-card, 
+    div[class*="Stats"], 
+    div[class*="stats"] {
+        width: 95% !important; 
+        max-width: none !important;
+        height: auto !important;
+        padding: 15px !important;
+        box-sizing: border-box !important;
+    }
+
+    li.stats img {
+        width: 20vw !important; 
+        margin-right: 4vw !important;
+    }
+
+    .text-container h3 {
+        font-size: 6vw !important; 
+        margin-bottom: 2vw !important;
+    }
+
+    .text-container .subtext,
+    .text-container .username-text {
+        font-size: 4vw !important; 
+    }
+
+    .text-container .typeracer,
+    .text-container .chess {
+        font-size: 7vw !important; 
+        margin-top: 3vw !important;
+    }
+
+    .skill-item img {
+        width: 9vw !important;
+        height: auto !important;
+    }
+    
+    .skill-item strong {
+        font-size: 6vw !important;
+    }
+    .osrs-skills-row {
+        gap: 3vw !important;
+    }
+    .text-container .chess img {
+        width: 8vw !important;
+        height: 8vw !important;
+    }
+
+    /* TODO: Fix comment section */
+    .comments-canvas,
+    #giscus-container,
+    div[class*="comment"] {
+        width: 95% !important;
+        max-width: none !important; 
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+}
 html, body {
     cursor: url('./media/cursors/Normal.cur'), default;
     background-color: #f0d099;
