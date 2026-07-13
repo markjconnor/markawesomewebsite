@@ -182,7 +182,7 @@
 
     async function fetchTypeRacerStats() {
         try {
-            const proxyUrl = 'https://corsproxy.io/?url='; 
+            const proxyUrl = 'https://typeracer.mark-connor2003.workers.dev/';
             const targetUrl = 'https://data.typeracer.com/users?id=tr:jay_cartwright';
             
             const response = await fetch(proxyUrl + encodeURIComponent(targetUrl));
