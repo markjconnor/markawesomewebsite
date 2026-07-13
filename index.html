@@ -97,7 +97,7 @@
                     <h3>Chess Stats</h3>
                 </a>
                 <div class="subtext username-text">mark983511</div>
-                <div class="subtext chess"><img src="./media/time-rapid.png" alt="Rapid rating"> <strong id="chess-rapid">1200</strong></div>
+                <div class="subtext chess"><img src="./media/time-rapid.png" alt="Rapid rating"> <strong id="chess-rapid">1200<ustrong></div>
             </div>
         </li>
     </div>
@@ -182,8 +182,7 @@
 
     async function fetchTypeRacerStats() {
         try {
-            // CORS proxy --> bypasses TypeRacer strict front-end api call block
-            const proxyUrl = 'https://corsproxy.io/?';
+            const proxyUrl = 'https://corsproxy.io/?url='; 
             const targetUrl = 'https://data.typeracer.com/users?id=tr:jay_cartwright';
             
             const response = await fetch(proxyUrl + encodeURIComponent(targetUrl));
