@@ -103,6 +103,26 @@
     </div>
 
 </div>
+<div class="art-section-container">
+    <div class="art-card">
+        <h3 class="art-title">Art Board</h3>
+        <div class="art-grid" id="art-grid">
+            <!-- Art items are rendered here by JavaScript -->
+        </div>
+        <button class="see-all-art-btn" id="see-all-art-btn">See all art</button>
+    </div>
+</div>
+
+<div class="art-modal" id="art-modal">
+    <div class="art-modal-content">
+        <span class="art-modal-close" id="art-modal-close">&times;</span>
+        <img id="art-modal-img" src="" alt="">
+        <h3 id="art-modal-title"></h3>
+        <div id="art-modal-artist"></div>
+        <p id="art-modal-description"></p>
+    </div>
+</div>
+
 <div class="comments-section-container">
         <div class="giscus-card">
             <h3 class="comments-title">Comment Section</h3>
@@ -203,7 +223,104 @@
         fetchRuneScapeStats();
         fetchChessStats();
         fetchTypeRacerStats();
+        initArtGallery();
     });
+
+    //Art array
+    const artPieces = [
+        {
+            src: "./media/art/Cock_of_the_rock.png",
+            title: "Cock of the Rock",
+            artist: "Mark Connor",
+            description: "Part 2 of the Kinkajou series."
+        },
+        {
+            src: "./media/art/everyday_is_a_blessing.jpeg",
+            title: "Everyday is a Blessing",
+            artist: "Dom (from Finsbury Park)",
+            description: "Dom crafted this amazing art work in mere seconds. His creativity is inspiring."
+        },
+        {
+            src: "./media/art/Kinkajou.png",
+            title: "Kinkajou",
+            artist: "Mark Connor",
+            description: "When I was in France with my family we saw architecture from the 17th century. Many of the buildings had intricate statues of lions. My brother asked the question how did the French know what lions looked like? Inspired by this question, I asked Cillian and Mark to describe an amimal to me and I would draw it to the best of my ability. This is my attemt at drawing a kinkajou based on their description."
+        
+        },
+        
+        {
+            src: "./media/art/I_need_a_job.png",
+            title: "Procrastination",
+            artist: "Ruby Poon",
+            description: "Exclusive look at Ruby's art skills. So awesome." 
+        },
+    ];
+
+    let showingAllArt = false;
+
+    function initArtGallery() {
+        const seeAllBtn = document.getElementById('see-all-art-btn');
+        const artModal = document.getElementById('art-modal');
+        const artModalClose = document.getElementById('art-modal-close');
+
+        renderArtGallery();
+
+        seeAllBtn.addEventListener('click', () => {
+            showingAllArt = !showingAllArt;
+            renderArtGallery();
+        });
+
+        artModalClose.addEventListener('click', closeArtModal);
+        artModal.addEventListener('click', (event) => {
+            if (event.target === artModal) closeArtModal();
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeArtModal();
+        });
+    }
+
+    function renderArtGallery() {
+        const artGrid = document.getElementById('art-grid');
+        const seeAllBtn = document.getElementById('see-all-art-btn');
+
+        const piecesToShow = showingAllArt
+            ? artPieces.slice().reverse()
+            : artPieces.slice(-3).reverse();
+
+        artGrid.innerHTML = '';
+
+        piecesToShow.forEach((art) => {
+            const item = document.createElement('div');
+            item.className = 'art-item';
+            item.innerHTML = `
+                <div class="art-image-wrapper">
+                    <img src="${art.src}" alt="${art.title}" loading="lazy">
+                </div>
+                <div class="art-caption">
+                    <h4 class="art-piece-title">${art.title}</h4>
+                    <div class="art-piece-artist">${art.artist}</div>
+                </div>
+            `;
+            item.addEventListener('click', () => openArtModal(art));
+            artGrid.appendChild(item);
+        });
+
+        seeAllBtn.textContent = showingAllArt ? 'Show less' : 'See all art';
+        seeAllBtn.style.display = artPieces.length > 3 ? 'inline-block' : 'none';
+    }
+
+    function openArtModal(art) {
+        document.getElementById('art-modal-img').src = art.src;
+        document.getElementById('art-modal-img').alt = art.title;
+        document.getElementById('art-modal-title').textContent = art.title;
+        document.getElementById('art-modal-artist').textContent = 'by ' + art.artist;
+        document.getElementById('art-modal-description').textContent = art.description;
+        document.getElementById('art-modal').classList.add('show');
+    }
+
+    function closeArtModal() {
+        document.getElementById('art-modal').classList.remove('show');
+    }
         </script> 
     </div>
 
